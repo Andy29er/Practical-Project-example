@@ -2,7 +2,7 @@
 
 ===============================================================
 
-PCM-1 - SETUP HIBERNATE CONFIGURATION
+DONE - PCM-1 - SETUP HIBERNATE CONFIGURATION
 
 
 PCM-2 - CREATE HIBERNATE MODEL
