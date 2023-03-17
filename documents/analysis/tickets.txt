@@ -1,21 +1,14 @@
-
+===============================================================
 PCM-1 - SETUP HIBERNATE CONFIGURATION
-
 
 
 PCM-2 - CREATE HIBERNATE MODEL
 
 
-
 PCM-3 - CREATE GENERIC HIBERNATE REPOSITORY
 
 
-
 PCM-4 - IMPLEMENT MENU
-
-
-
-
 
 
 
