@@ -14,8 +14,8 @@ public abstract class AbstractSessionManager {
     private static final String DATABASE_CURRENT_SESSION_CONTEXT_CLASS = "thread";
 
     private static final String DATABASE_HOST = "jdbc:mysql://localhost:3306/";
-    private static final String DATABASE_USERNAME = "admin";
-    private static final String DATABASE_PASSWORD = "admin";
+    private static final String DATABASE_USERNAME = "root";
+    private static final String DATABASE_PASSWORD = "Zxcv11!!";
 
 
     private static final String DATABASE_SHOW_SQL = "true";

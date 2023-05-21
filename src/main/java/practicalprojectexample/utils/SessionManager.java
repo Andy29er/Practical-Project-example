@@ -2,6 +2,9 @@ package practicalprojectexample.utils;
 
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
+import practicalprojectexample.model.Consult;
+import practicalprojectexample.model.Pet;
+import practicalprojectexample.model.Vet;
 
 public class SessionManager extends AbstractSessionManager {
 
@@ -24,6 +27,8 @@ public class SessionManager extends AbstractSessionManager {
 
     @Override
     protected void setAnnotatedClasses(Configuration configuration) {
-
+        configuration.addAnnotatedClass(Vet.class);
+        configuration.addAnnotatedClass(Pet.class);
+        configuration.addAnnotatedClass(Consult.class);
     }
 }
