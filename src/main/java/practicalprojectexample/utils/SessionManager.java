@@ -1,3 +1,5 @@
+// FOLDER: model | SessionManager.java
+
 package practicalprojectexample.utils;
 
 import org.hibernate.SessionFactory;

@@ -1,3 +1,5 @@
+// FOLDER: model | Consult.java
+
 package practicalprojectexample.model;
 
 import javax.persistence.*;
