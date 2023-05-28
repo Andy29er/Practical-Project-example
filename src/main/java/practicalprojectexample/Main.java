@@ -2,7 +2,10 @@
 
 package practicalprojectexample;
 
+import practicalprojectexample.controller.VetController;
 import practicalprojectexample.controller.menu.MenuItem;
+import practicalprojectexample.repository.VetRepositoryImpl;
+import practicalprojectexample.service.VetServiceImpl;
 import practicalprojectexample.utils.SessionManager;
 
 import java.util.Scanner;
@@ -12,6 +15,7 @@ public class Main {
 
         Scanner scanner = new Scanner(System.in);
         SessionManager.getSessionFactory(); // to force an initialization
+        VetController vetController = new VetController(new VetServiceImpl(new VetRepositoryImpl()), scanner);
 
         for (int i = 1; i < 100; i++) {
             System.out.println("////////////////////////////////////////");
@@ -34,7 +38,7 @@ public class Main {
 
             switch (selectedOption) {
                 case ADD_VET:
-                    System.out.println("Add vet not implemented");
+                    vetController.createVet();
                     break;
                 case UPDATE_VET:
                     System.out.println("Update vet not implemented");

@@ -23,8 +23,8 @@ public class Vet {
     private String speciality;
 
     // commenting because it's never required
-    //@OneToMany(mappedBy = "vet")
-    //private List<Consult> consults;
+    // @OneToMany(mappedBy = "vet")
+    // private List<Consult> consults;
 
     public Vet() {
     }
