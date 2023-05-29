@@ -41,8 +41,14 @@ public class Main {
                     vetController.createVet();
                     break;
                 case UPDATE_VET:
-                    System.out.println("Update vet not implemented");
+                    vetController.updateVet();
                     break;
+                // Same update, but with keeping you in the Enter ID menu, instead of returning to main menu:
+                /* case UPDATE_VET:
+                    while (!vetController.updateVet()) {
+                        // do nothing
+                    }
+                    break; */
                 case DELETE_VET:
                     System.out.println("Delete vet not implemented");
                     break;

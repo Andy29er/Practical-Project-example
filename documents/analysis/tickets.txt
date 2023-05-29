@@ -28,7 +28,7 @@ As a user, I should be able to ADD a new vet with the following detains: first n
     - If the creation process fails, the system will show an appropriate error message.
 
 
-PCM-6 - IMPLEMENT VIEW ALL VETS
+DONE - PCM-6 - IMPLEMENT VIEW ALL VETS
 As a user, I should be able to VIEW all the existing vets from the system.
     - I should be able to view a list where each line will contain: ID, first name, last name
       (not much here, as we'll give the user the option to add as many as wanted later)
@@ -41,7 +41,7 @@ As a user, I should be able to VIEW all the details of an existing vet by ID.
     - If the given ID is NOT found in the system, an appropriate error message will be shown on the screen.
 
 
-PCM-8 - IMPLEMENT UPDATE VET
+DONE - PCM-8 - IMPLEMENT UPDATE VET
 As a user, I should be able to UPDATE the details of an existing vet.
     - If the vet is found by ID in the system, I should be able to update the following data:
        - firstname
@@ -49,7 +49,7 @@ As a user, I should be able to UPDATE the details of an existing vet.
        - address
        - speciality
     - The system will validate the following data:
-           - firstname - not blank & not empty
+           - firstname - not blank & not empty (skipping this one)
            - lastname - not blank & not empty
            - address - not blank & not empty
            - speciality - not blank & not empty
