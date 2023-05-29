@@ -34,7 +34,7 @@ As a user, I should be able to VIEW all the existing vets from the system.
       (not much here, as we'll give the user the option to add as many as wanted later)
 
 
-PCM-7 - IMPLEMENT VIEW VET BY ID
+DONE - PCM-7 - IMPLEMENT VIEW VET BY ID
 As a user, I should be able to VIEW all the details of an existing vet by ID.
     - If the given ID is found in the system, the following details will be shown on the screen:
       ID, firstname, lastname, address, specialty

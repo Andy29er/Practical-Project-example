@@ -85,4 +85,12 @@ public class VetServiceImpl implements VetService {
             throw new EntityNotFoundException("Vet not found by ID" + id);
         }
     }
+
+    @Override
+    public Optional<Vet> findVetById(long id) {
+        if (id <= 0) {
+            throw new IllegalArgumentException("ID is less or equal to zero");
+        }
+        return vetRepository.findById(id);
+    }
 }

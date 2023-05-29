@@ -7,6 +7,7 @@ import practicalprojectexample.repository.exception.EntityUpdateFailedException;
 import practicalprojectexample.service.VetService;
 import practicalprojectexample.service.exception.EntityNotFoundException;
 
+import java.util.Optional;
 import java.util.Scanner;
 
 public class VetController {
@@ -51,7 +52,7 @@ public class VetController {
         }
     }
 
-    /*public void updateVet() {
+    public void updateVet() {
         try {
             System.out.println("Please enter the vet's ID:");
             long id = Long.parseLong(scanner.nextLine());
@@ -78,40 +79,26 @@ public class VetController {
         } catch (Exception e) {
             System.err.println("Internal server error.");
         }
-    }*/
+    }
 
-    // Same update, but with keeping you in the Enter ID menu, instead of returning to main menu:
-    public boolean updateVet() {  // boolean instead of void
+    public void findVetById() {
         try {
             System.out.println("Please enter the vet's ID:");
             long id = Long.parseLong(scanner.nextLine());
 
-            System.out.println("Please insert the vet's new last name:");
-            String lastName = scanner.nextLine();
-            System.out.println("Please insert the vet's new address:");
-            String address = scanner.nextLine();
-            System.out.println("Please insert the vet's new specialty:");
-            String speciality = scanner.nextLine();
+            Optional<Vet> optionalVet = vetService.findVetById(id);
 
-            vetService.updateVet(id, lastName, address, speciality);
-            System.out.println("Vet successfully updated.");
-
-            // Add a return:
-            return true;
-
+            if (optionalVet.isPresent()) { // IF FOUND, then print it:
+                System.out.println(optionalVet.get());
+            } else {
+                System.out.println("Vet not found by ID: " + id);
+            }
         } catch (NumberFormatException e) {
             System.err.println("Please insert a valid numeric ID:"); // For error message when entering non numeric values as ID
         } catch (IllegalArgumentException e) {
             System.err.println(e.getMessage());
-        } catch (EntityUpdateFailedException e) {
-            System.err.println(e.getMessage());
-            System.out.println("Please retry.");
-        } catch (EntityNotFoundException e) {
-            System.err.println(e.getMessage());
         } catch (Exception e) {
             System.err.println("Internal server error.");
         }
-        // Add another return:
-        return false;
     }
 }

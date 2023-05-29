@@ -43,17 +43,14 @@ public class Main {
                 case UPDATE_VET:
                     vetController.updateVet();
                     break;
-                // Same update, but with keeping you in the Enter ID menu, instead of returning to main menu:
-                /* case UPDATE_VET:
-                    while (!vetController.updateVet()) {
-                        // do nothing
-                    }
-                    break; */
                 case DELETE_VET:
                     System.out.println("Delete vet not implemented");
                     break;
                 case VIEW_VET_LIST:
                     vetController.displayAllVets();
+                    break;
+                case VIEW_VET_BY_ID:
+                    vetController.findVetById();
                     break;
                 case EXIT:
                     System.out.println("Good bye!");
