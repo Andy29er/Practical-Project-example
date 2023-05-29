@@ -2,7 +2,10 @@
 
 package practicalprojectexample.service;
 
+import practicalprojectexample.model.Vet;
 import practicalprojectexample.repository.exception.EntityUpdateFailedException;
+
+import java.util.List;
 
 public interface VetService {
     void addVet(
@@ -11,4 +14,6 @@ public interface VetService {
             String address,
             String speciality
     ) throws EntityUpdateFailedException;
+
+    List<Vet> getAllVets();
 }

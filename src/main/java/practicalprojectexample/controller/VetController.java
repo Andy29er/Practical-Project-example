@@ -2,6 +2,7 @@
 
 package practicalprojectexample.controller;
 
+import practicalprojectexample.model.Vet;
 import practicalprojectexample.repository.exception.EntityUpdateFailedException;
 import practicalprojectexample.service.VetService;
 
@@ -39,6 +40,13 @@ public class VetController {
             System.out.println("Please retry");
         } catch (Exception e) {
             System.err.println("Internal server error"); // user can't fix these, it's not its fault
+        }
+    }
+
+    public void displayAllVets() {
+        vetService.getAllVets();
+        for (Vet vet :vetService.getAllVets()) {
+            System.out.println(vet.getId() + " " + vet.getFirstName() + " " + vet.getLastName());
         }
     }
 }
