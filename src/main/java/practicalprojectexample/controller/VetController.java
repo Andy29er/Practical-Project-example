@@ -47,7 +47,7 @@ public class VetController {
 
     public void displayAllVets() {
         vetService.getAllVets();
-        for (Vet vet :vetService.getAllVets()) {
+        for (Vet vet : vetService.getAllVets()) {
             System.out.println(vet.getId() + " " + vet.getFirstName() + " " + vet.getLastName());
         }
     }
@@ -65,7 +65,7 @@ public class VetController {
             String speciality = scanner.nextLine();
 
             vetService.updateVet(id, lastName, address, speciality);
-            System.out.println("Vet successfully updated.");
+            System.out.println("Vet updated successfully.");
 
         } catch (NumberFormatException e) {
             System.err.println("Please insert a valid numeric ID:"); // For error message when entering non numeric values as ID
@@ -96,6 +96,25 @@ public class VetController {
         } catch (NumberFormatException e) {
             System.err.println("Please insert a valid numeric ID:"); // For error message when entering non numeric values as ID
         } catch (IllegalArgumentException e) {
+            System.err.println(e.getMessage());
+        } catch (Exception e) {
+            System.err.println("Internal server error.");
+        }
+    }
+
+    public void deleteVetByID() {
+        try {
+            System.out.println("Please enter the vet's ID:");
+            long id = Long.parseLong(scanner.nextLine());
+
+            vetService.deleteVetById(id);
+            System.out.println("Vet deleted successfully.");
+
+        } catch (NumberFormatException e) {
+            System.err.println("Please insert a valid numeric ID:"); // For error message when entering non numeric values as ID
+        } catch (IllegalArgumentException e) {
+            System.err.println(e.getMessage());
+        } catch (EntityNotFoundException e) {
             System.err.println(e.getMessage());
         } catch (Exception e) {
             System.err.println("Internal server error.");
