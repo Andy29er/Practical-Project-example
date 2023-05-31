@@ -65,7 +65,7 @@ As a user, I should be able to DELETE an existing vet from the system by ID.
 
 ===============================================================
 
-PCM-10 - IMPLEMENT CREATE PET
+DONE - PCM-10 - IMPLEMENT CREATE PET
 As a user, I should be able to ADD a new pet with the following detains: race, birthdate, isVaccinated, ownerName.
     - If the creation process is successful, the system will allocate a unique ID to the new pet.
     - The system will validate the following data:

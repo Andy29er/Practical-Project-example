@@ -2,9 +2,12 @@
 
 package practicalprojectexample;
 
+import practicalprojectexample.controller.PetController;
 import practicalprojectexample.controller.VetController;
 import practicalprojectexample.controller.menu.MenuItem;
+import practicalprojectexample.repository.PetRepositoryImpl;
 import practicalprojectexample.repository.VetRepositoryImpl;
+import practicalprojectexample.service.PetServiceImpl;
 import practicalprojectexample.service.VetServiceImpl;
 import practicalprojectexample.utils.SessionManager;
 
@@ -15,7 +18,18 @@ public class Main {
 
         Scanner scanner = new Scanner(System.in);
         SessionManager.getSessionFactory(); // to force an initialization
-        VetController vetController = new VetController(new VetServiceImpl(new VetRepositoryImpl()), scanner);
+
+        VetController vetController = new VetController(
+                new VetServiceImpl(
+                        new VetRepositoryImpl()),
+                scanner
+        );
+
+        PetController petController = new PetController(
+                scanner,  // scanner goes first now
+                new PetServiceImpl(
+                        new PetRepositoryImpl())
+                );
 
         for (int i = 1; i < 100; i++) {
             System.out.println("////////////////////////////////////////");
@@ -51,6 +65,9 @@ public class Main {
                     break;
                 case VIEW_VET_BY_ID:
                     vetController.findVetById();
+                    break;
+                case ADD_PET:
+                    petController.createPet();
                     break;
                 case EXIT:
                     System.out.println("Good bye!");
