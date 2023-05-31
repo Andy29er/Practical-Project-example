@@ -53,4 +53,9 @@ public class PetController {
             System.err.println("Internal server error"); // user can't fix these, it's not its fault
         }
     }
+
+    public void viewAllPets() {
+        petService.getAllPets().stream()
+                .forEach(pet -> System.out.println(pet.getId() + " " + pet.getRace() + " " + pet.getOwnerName()));
+    }
 }
