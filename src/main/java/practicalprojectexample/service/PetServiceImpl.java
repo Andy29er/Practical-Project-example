@@ -10,6 +10,7 @@ import java.time.Duration;
 import java.time.Instant;
 import java.util.Date;
 import java.util.List;
+import java.util.Optional;
 
 public class PetServiceImpl implements PetService {
 
@@ -41,5 +42,13 @@ public class PetServiceImpl implements PetService {
     @Override
     public List<Pet> getAllPets() {
         return petRepository.findAll();
+    }
+
+    @Override
+    public Optional<Pet> getPetByID(long id) {
+        if (id <= 0) {
+            throw new IllegalArgumentException("ID must be greater than zero");
+        }
+        return petRepository.findById(id);
     }
 }

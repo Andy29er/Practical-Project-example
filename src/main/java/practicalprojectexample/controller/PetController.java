@@ -2,6 +2,8 @@
 
 package practicalprojectexample.controller;
 
+import practicalprojectexample.model.Pet;
+import practicalprojectexample.model.Vet;
 import practicalprojectexample.repository.exception.EntityUpdateFailedException;
 import practicalprojectexample.service.PetService;
 
@@ -10,6 +12,7 @@ import java.time.ZoneOffset;
 import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
 import java.util.Date;
+import java.util.Optional;
 import java.util.Scanner;
 
 public class PetController {
@@ -57,5 +60,26 @@ public class PetController {
     public void viewAllPets() {
         petService.getAllPets().stream()
                 .forEach(pet -> System.out.println(pet.getId() + " " + pet.getRace() + " " + pet.getOwnerName()));
+    }
+
+    public void viewPetById() {
+        try {
+            System.out.println("Please enter the pet's ID:");
+            long id = Long.parseLong(scanner.nextLine());
+
+            Optional<Pet> optionalPet = petService.getPetByID(id);
+
+            if (optionalPet.isPresent()) { // IF FOUND, then print it:
+                System.out.println(optionalPet.get());
+            } else {
+                System.out.println("Pet not found by ID: " + id);
+            }
+        } catch (NumberFormatException e) {
+            System.err.println("Please insert a valid numeric ID:"); // For error message when entering non numeric values as ID
+        } catch (IllegalArgumentException e) {
+            System.err.println(e.getMessage());
+        } catch (Exception e) {
+            System.err.println("Internal server error.");
+        }
     }
 }

@@ -29,7 +29,7 @@ public class Main {
                 scanner,  // scanner goes first now
                 new PetServiceImpl(
                         new PetRepositoryImpl())
-                );
+        );
 
         for (int i = 1; i < 100; i++) {
             System.out.println("////////////////////////////////////////");
@@ -71,6 +71,9 @@ public class Main {
                     break;
                 case VIEW_ALL_PETS:
                     petController.viewAllPets();
+                    break;
+                case VIEW_PET_BY_ID:
+                    petController.viewPetById();
                     break;
                 case EXIT:
                     System.out.println("Good bye!");
