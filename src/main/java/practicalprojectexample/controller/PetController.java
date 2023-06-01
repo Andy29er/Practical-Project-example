@@ -6,6 +6,7 @@ import practicalprojectexample.model.Pet;
 import practicalprojectexample.model.Vet;
 import practicalprojectexample.repository.exception.EntityUpdateFailedException;
 import practicalprojectexample.service.PetService;
+import practicalprojectexample.service.exception.EntityNotFoundException;
 
 import java.time.LocalDate;
 import java.time.ZoneOffset;
@@ -77,6 +78,25 @@ public class PetController {
         } catch (NumberFormatException e) {
             System.err.println("Please insert a valid numeric ID:"); // For error message when entering non numeric values as ID
         } catch (IllegalArgumentException e) {
+            System.err.println(e.getMessage());
+        } catch (Exception e) {
+            System.err.println("Internal server error.");
+        }
+    }
+
+    public void deletePetById() {
+        try {
+            System.out.println("Please enter the pet's ID:");
+            long id = Long.parseLong(scanner.nextLine());
+
+            petService.deletePetById(id);
+            System.out.println("Pet deleted successfully.");
+
+        } catch (NumberFormatException e) {
+            System.err.println("Please insert a valid numeric ID:"); // For error message when entering non numeric values as ID
+        } catch (IllegalArgumentException e) {
+            System.err.println(e.getMessage());
+        } catch (EntityNotFoundException e) {
             System.err.println(e.getMessage());
         } catch (Exception e) {
             System.err.println("Internal server error.");

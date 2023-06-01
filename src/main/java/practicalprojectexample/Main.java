@@ -75,6 +75,9 @@ public class Main {
                 case VIEW_PET_BY_ID:
                     petController.viewPetById();
                     break;
+                case DELETE_PET:
+                    petController.deletePetById();
+                    break;
                 case EXIT:
                     System.out.println("Good bye!");
                     break;

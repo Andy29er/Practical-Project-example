@@ -4,6 +4,7 @@ package practicalprojectexample.service;
 
 import practicalprojectexample.model.Pet;
 import practicalprojectexample.repository.exception.EntityUpdateFailedException;
+import practicalprojectexample.service.exception.EntityNotFoundException;
 
 import javax.swing.text.html.Option;
 import java.util.Date;
@@ -20,4 +21,6 @@ public interface PetService {
     List<Pet> getAllPets();
 
     Optional<Pet> getPetByID(long id);
+
+    void deletePetById(long id) throws EntityUpdateFailedException, EntityNotFoundException;
 }
