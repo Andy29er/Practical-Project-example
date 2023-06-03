@@ -14,6 +14,7 @@ public enum MenuItem {
     UPDATE_PET(9, "Update pet"),
     DELETE_PET(10, "Delete pet"),
     CREATE_CONSULT(11, "Create consult"),
+    VIEW_ALL_CONSULTS(12, "View all consults"),
     EXIT(100, "Exit"),
     UNKNOWN(999, "Unknown option");
 

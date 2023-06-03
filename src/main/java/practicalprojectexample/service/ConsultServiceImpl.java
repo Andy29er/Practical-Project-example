@@ -15,6 +15,7 @@ import javax.swing.text.html.Option;
 import java.time.Duration;
 import java.time.Instant;
 import java.util.Date;
+import java.util.List;
 import java.util.Optional;
 
 public class ConsultServiceImpl implements ConsultService {
@@ -61,5 +62,10 @@ public class ConsultServiceImpl implements ConsultService {
         consult.setVet(optionalVet.get());
         consult.setPet(optionalPet.get());
         consultRepository.save(consult);
+    }
+
+    @Override
+    public List<Consult> getAllConsults() {
+        return consultRepository.findAll();
     }
 }

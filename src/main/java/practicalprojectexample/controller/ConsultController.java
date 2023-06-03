@@ -7,6 +7,7 @@ import practicalprojectexample.service.ConsultService;
 import practicalprojectexample.service.exception.EntityNotFoundException;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.time.ZoneOffset;
 import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
@@ -14,6 +15,8 @@ import java.util.Date;
 import java.util.Scanner;
 
 public class ConsultController {
+
+    private static final DateTimeFormatter CONSULT_DATE_TIME_FORMATTER = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
     private final ConsultService consultService;
     private final Scanner scanner;
 
@@ -30,9 +33,9 @@ public class ConsultController {
             long petID = Long.parseLong(scanner.nextLine().trim());
             System.out.println("Please insert description:");
             String description = scanner.nextLine().trim();
-            System.out.println("Please insert date of consult [YYYY-MM-DD]:");
-            Date dateOfConsult = Date.from(LocalDate.parse(scanner.nextLine(),
-                    DateTimeFormatter.ISO_LOCAL_DATE).atStartOfDay().toInstant(ZoneOffset.UTC));
+            System.out.println("Please insert date of consult [YYYY-MM-DD HH:mm]:");
+            Date dateOfConsult = Date.from(LocalDateTime.parse(scanner.nextLine(),
+                    CONSULT_DATE_TIME_FORMATTER).toInstant(ZoneOffset.of("+3")));
             consultService.createConsult(vetID, petID, dateOfConsult, description);
             System.out.println("Consult was created");
         } catch (NumberFormatException e) {
@@ -50,5 +53,16 @@ public class ConsultController {
             System.err.println("Internal server error");
             // e.printStackTrace();
         }
+    }
+
+    public void viewAllConsults() {
+        consultService.getAllConsults().stream()
+                .forEach(consult ->
+                        System.out.println(consult.getId() + " " +
+                                consult.getVet().getFirstName() + " " +
+                                consult.getVet().getLastName() + " " +
+                                consult.getPet().getOwnerName() + " " +
+                                consult.getAppointmentDate())
+                );
     }
 }
