@@ -22,5 +22,7 @@ public interface PetService {
 
     Optional<Pet> getPetByID(long id);
 
+    void updatePet(long id, boolean isVaccinated, String ownerName) throws EntityUpdateFailedException, EntityNotFoundException;
+
     void deletePetById(long id) throws EntityUpdateFailedException, EntityNotFoundException;
 }

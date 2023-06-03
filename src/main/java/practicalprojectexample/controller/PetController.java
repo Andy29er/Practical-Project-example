@@ -84,6 +84,29 @@ public class PetController {
         }
     }
 
+    public void updatePet() {
+        try {
+            System.out.println("Please insert pet's ID:");
+            long id = Long.parseLong(scanner.nextLine());
+            System.out.println("Is the pet vaccinated? [true/false]");
+            boolean isVaccinated = Boolean.parseBoolean(scanner.nextLine().trim());
+            System.out.println("Please insert pet owner's name");
+            String ownerName = scanner.nextLine().trim();
+            petService.updatePet(id, isVaccinated, ownerName);
+            System.out.println("Pet was updated");
+        } catch (NumberFormatException e) {
+            System.err.println("Please insert a valid numeric ID:");
+        } catch (IllegalArgumentException e) {
+            System.err.println(e.getMessage());
+        } catch (EntityNotFoundException e) {
+            System.err.println(e.getMessage());
+        } catch (EntityUpdateFailedException e) {
+            System.err.println(e.getMessage());
+        } catch (Exception e) {
+            System.err.println("Internal server error");
+        }
+    }
+
     public void deletePetById() {
         try {
             System.out.println("Please enter the pet's ID:");
