@@ -2,11 +2,14 @@
 
 package practicalprojectexample;
 
+import practicalprojectexample.controller.ConsultController;
 import practicalprojectexample.controller.PetController;
 import practicalprojectexample.controller.VetController;
 import practicalprojectexample.controller.menu.MenuItem;
+import practicalprojectexample.repository.ConsultRepositoryImpl;
 import practicalprojectexample.repository.PetRepositoryImpl;
 import practicalprojectexample.repository.VetRepositoryImpl;
+import practicalprojectexample.service.ConsultServiceImpl;
 import practicalprojectexample.service.PetServiceImpl;
 import practicalprojectexample.service.VetServiceImpl;
 import practicalprojectexample.utils.SessionManager;
@@ -29,6 +32,15 @@ public class Main {
                 scanner,  // scanner goes first now
                 new PetServiceImpl(
                         new PetRepositoryImpl())
+        );
+
+        ConsultController consultController = new ConsultController(
+                new ConsultServiceImpl(
+                        new VetRepositoryImpl(),
+                        new PetRepositoryImpl(),
+                        new ConsultRepositoryImpl()
+                ),
+                scanner
         );
 
         for (int i = 1; i < 100; i++) {
@@ -80,6 +92,9 @@ public class Main {
                     break;
                 case DELETE_PET:
                     petController.deletePetById();
+                    break;
+                case CREATE_CONSULT:
+                    consultController.createConsult();
                     break;
                 case EXIT:
                     System.out.println("Good bye!");
