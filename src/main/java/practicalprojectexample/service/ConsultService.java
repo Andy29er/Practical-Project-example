@@ -17,4 +17,6 @@ public interface ConsultService {
 
     Optional<Consult> getConsultById(long id);
 
+    void updateConsultById(long id, String description) throws EntityNotFoundException, EntityUpdateFailedException;
+
 }

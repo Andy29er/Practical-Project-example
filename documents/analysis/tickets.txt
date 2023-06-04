@@ -136,7 +136,7 @@ As a user, I should be able to VIEW all the details of an existing consult by ID
     - If the given ID is NOT found in the system, an appropriate error message will be shown on the screen.
 
 
-PCM-18 - IMPLEMENT UPDATE CONSULT
+DONE - PCM-18 - IMPLEMENT UPDATE CONSULT
 As a user, I should be able to UPDATE the details of an existing consult.
     - If the consult is found by ID in the system, I should be able to update the following data:
        - description

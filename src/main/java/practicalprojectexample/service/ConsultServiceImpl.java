@@ -11,7 +11,6 @@ import practicalprojectexample.repository.VetRepository;
 import practicalprojectexample.repository.exception.EntityUpdateFailedException;
 import practicalprojectexample.service.exception.EntityNotFoundException;
 
-import javax.swing.text.html.Option;
 import java.time.Duration;
 import java.time.Instant;
 import java.util.Date;
@@ -75,5 +74,22 @@ public class ConsultServiceImpl implements ConsultService {
             throw new IllegalArgumentException("Invalid Consult ID. Consult ID value must be greater than zero.");
         }
         return consultRepository.findById(id);
+    }
+
+    @Override
+    public void updateConsultById(long id, String description) throws EntityNotFoundException, EntityUpdateFailedException {
+        if (id <= 0) {
+            throw new IllegalArgumentException("Invalid Consult ID. Consult ID value must be greater than zero.");
+        }
+        if (description == null || description.isBlank() || description.isEmpty()) {
+            throw new IllegalArgumentException("Invalid description. Description value must not be null and not blank");
+        }
+        Optional<Consult> optionalConsult = consultRepository.findById(id);
+        if (optionalConsult.isEmpty()) {
+            throw new EntityNotFoundException("Consult ID not found");
+        }
+        Consult consult = optionalConsult.get();
+        consult.setDescription(description);
+        consultRepository.update(consult);
     }
 }
