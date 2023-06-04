@@ -2,6 +2,7 @@
 
 package practicalprojectexample.controller;
 
+import practicalprojectexample.model.Consult;
 import practicalprojectexample.repository.exception.EntityUpdateFailedException;
 import practicalprojectexample.service.ConsultService;
 import practicalprojectexample.service.exception.EntityNotFoundException;
@@ -12,6 +13,7 @@ import java.time.ZoneOffset;
 import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
 import java.util.Date;
+import java.util.Optional;
 import java.util.Scanner;
 
 public class ConsultController {
@@ -64,5 +66,27 @@ public class ConsultController {
                                 consult.getPet().getOwnerName() + " " +
                                 consult.getAppointmentDate())
                 );
+    }
+
+    public void viewConsultByID() {
+        try {
+            System.out.println("Please insert consult ID:");
+            long id = Long.parseLong(scanner.nextLine().trim());
+            Optional<Consult> optionalConsult = consultService.getConsultById(id);
+            if (optionalConsult.isPresent()) {
+                Consult consult = optionalConsult.get();
+                // System.out.println(optionalConsult.get() + " " + optionalConsult.);
+                System.out.println(consult + " " + consult.getVet() + " " + consult.getPet());
+            } else {
+                System.out.println("Consult ID not found");
+            }
+        } catch (NumberFormatException e) {
+            System.err.println("Please insert a number:");
+        } catch (IllegalArgumentException e) {
+            System.err.println(e.getMessage());
+        } catch (Exception e) {
+            System.err.println("Internal server error");
+            // e.printStackTrace();
+        }
     }
 }
